@@ -4,9 +4,9 @@
     box-sizing: border-box;
     background-color: #debdbd;
 }
-
 .main{
-    margin-top: 150px;
+    height: 90vh;
+    width: 100%;
     display: flex;
     text-align: center;
     justify-content: center;
