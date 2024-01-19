@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minute Timer</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1 style="margin-bottom: 20px;">Let's Go .....</h1>
-  <p id="timer">00:00</p>
-  <button id="startButton" onclick="startTimer()">Start</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minute Timer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <h1 style="margin-bottom: 20px">Let's Go .....</h1>
+      <p id="timer">00:00</p>
+      <button id="startButton" onclick="startTimer()">Start</button>
 
-  <audio id="alarmSound">
-    <source src="sound (2).wav" type="audio/mp3">
-  </audio>
+      <audio id="alarmSound">
+        <source src="sound (2).wav" type="audio/mp3" />
+      </audio>
+    </div>
 
-  <script>
-    let timerInterval;
-    let timerDisplay = document.getElementById('timer');
-    let totalSeconds = 0;
+    <script>
+      let timerInterval;
+      let timerDisplay = document.getElementById("timer");
+      let totalSeconds = 0;
 
-    function startTimer() {
-      // Clear any existing intervals to avoid multiple timers running simultaneously
-      clearInterval(timerInterval);
+      function startTimer() {
+        // Clear any existing intervals to avoid multiple timers running simultaneously
+        clearInterval(timerInterval);
 
-      timerInterval = setInterval(() => {
-        totalSeconds++;
-        updateTimerDisplay();
-        if (totalSeconds % 60 === 0) {
-          playAlarm();
-        }
-      }, 1000); // Update every second
-    }
+        timerInterval = setInterval(() => {
+          totalSeconds++;
+          updateTimerDisplay();
+          if (totalSeconds % 60 === 0) {
+            playAlarm();
+          }
+        }, 1000); // Update every second
+      }
 
-    function updateTimerDisplay() {
-      const minutes = Math.floor(totalSeconds / 60);
-      const seconds = totalSeconds % 60;
-      const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-      timerDisplay.textContent = formattedTime;
-    }
+      function updateTimerDisplay() {
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
+          seconds
+        ).padStart(2, "0")}`;
+        timerDisplay.textContent = formattedTime;
+      }
 
-    function playAlarm() {
-      const alarmSound = document.getElementById('alarmSound');
-      alarmSound.play();
-    }
-  </script>
-</body>
+      function playAlarm() {
+        const alarmSound = document.getElementById("alarmSound");
+        alarmSound.play();
+      }
+    </script>
+  </body>
 </html>
